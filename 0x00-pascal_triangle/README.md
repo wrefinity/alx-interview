@@ -9,3 +9,21 @@ Pascal’s Triangle is a kind of number pattern. Pascal’s Triangle is the tria
 
 Returns an empty list if n <= 0
 You can assume n will be always an integer
+
+
+
+## Pattern Consideration 
+```
+[1]
+[1,1]
+[1,2,1]
+[1,3,3,1]
+[1,4,6,4,1]
+```
+1. when the index of the row and column is not thesame consider this 
+- when the col is at index 1 the result to be appended is 1
+- append the result of the previous row and col using the arithmetic operation
+```
+array[row-1][col] + array[row-1][col-1]
+```
+2. when the index of the row and column are same the result to be appended is 1
