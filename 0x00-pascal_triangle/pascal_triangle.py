@@ -13,7 +13,8 @@ def pascal_triangle(n):
                 if col == 0:
                     pas[row].append(1)
                 else:
-                    pas[row].append(pas[row-1][col] + pas[row-1][col-1])
+                    pas[row].append(pas[row-1][col] \
+                            + pas[row-1][col-1])
             elif(col == row):
                 pas[row].append(1)
     return pas
