@@ -11,17 +11,47 @@ def minOperations(n):
         return:
                number of minimun operations
     """
+    char_file = 1  # how many chars in the file
+    copied = 0  # how many H's copied
+    counter = 0  # operations counter
 
-    char_file = 1
-    n_copies = 0  # number of times (H's)is copied
-    count = 0  # counter for the operation
     while char_file < n:
-        rems = n - char_file
-        if (rems % char_file == 0):
-            n_copies = char_file
-            char_file += n_copies
-            count += 2
+        # if nothing is copied yet
+        if copied == 0:
+            # copyall
+            copied = char_file
+            counter += 1
+
+        # if nothing is pasted yet
+        if char_file == 1:
+            # paste
+            char_file += copied
+            counter += 1
+            continue
+
+        rems = n - char_file  # the remainder of chars to Paste
+        # check if impossible by checking if the clipboard
+        # has more than needed to reach the number desired
+        # This means that the number of chars in file is equal
+        # or more than in the clipboard.
+        # in both situations it's impossible to achieve n of chars
+        if rems < copied:
+            return 0
+
+        # if it can't be devided
+        if rems % char_file != 0:
+            # paste current clipboard
+            char_file += copied
+            counter += 1
         else:
-            char_file += n_copies
-            count += 1
-    return count
+            # copyall
+            copied = char_file
+            # paste
+            char_file += copied
+            counter += 2
+
+    # if the  desired result was obtained
+    if char_file == n:
+        return counter
+    else:
+        return 0
