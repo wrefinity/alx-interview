@@ -16,7 +16,7 @@ def minOperations(n):
     """
 
     chars_in_file = 1
-    clipboard = 0  # how many times chars (H's) copied
+    clipboard = 0  # num of times chars (H's) is copied
     counter = 0  # operations counter
     while chars_in_file < n:
         remainder = n - chars_in_file
@@ -27,4 +27,4 @@ def minOperations(n):
         else:
             chars_in_file += clipboard
             counter += 1
-    return 
+    return counter
