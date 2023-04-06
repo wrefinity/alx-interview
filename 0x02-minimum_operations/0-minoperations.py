@@ -20,13 +20,16 @@ def minOperations(n):
         if copied == 0:
             # copyall
             copied = char_file
+            #increment count
             counter += 1
 
         # if nothing is pasted yet
         if char_file == 1:
             # paste
             char_file += copied
+            #incremnt count
             counter += 1
+            # continue next loop
             continue
 
         rems = n - char_file  # the remainder of chars to Paste
@@ -38,16 +41,18 @@ def minOperations(n):
         if rems < copied:
             return 0
 
-        # if it can't be devided
+        # if it can't be divided
         if rems % char_file != 0:
             # paste current clipboard
             char_file += copied
+            #increment count
             counter += 1
         else:
             # copyall
             copied = char_file
             # paste
             char_file += copied
+            #increment count
             counter += 2
 
     # if the  desired result was obtained
