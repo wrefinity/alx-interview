@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''The minimum operations coding challenge.
+'''minimum operations challenge.
 '''
 
 
@@ -9,7 +9,7 @@ def minOperations(n):
     '''
     if not isinstance(n, int):
         return 0
-    ops_count = 0
+    op_count = 0
     clipboard = 0
     done = 1
     # print('H', end='')
@@ -18,18 +18,18 @@ def minOperations(n):
             # init (the first copy all and paste)
             clipboard = done
             done += clipboard
-            ops_count += 2
+            op_count += 2
             # print('-(11)->{}'.format('H' * done), end='')
         elif n - done > 0 and (n - done) % done == 0:
             # copy all and paste
             clipboard = done
             done += clipboard
-            ops_count += 2
+            op_count += 2
             # print('-(11)->{}'.format('H' * done), end='')
         elif clipboard > 0:
             # paste
             done += clipboard
-            ops_count += 1
+            op_count += 1
             # print('-(01)->{}'.format('H' * done), end='')
     # print('')
-    return ops_count
+    return op_count
