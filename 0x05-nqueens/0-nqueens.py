@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-""" Calculate nqueens of n * n board"""
+
+"""N-Queen Chess Game"""
 
 import sys
 
 
 def ChessBoard(n: int):
-    """ N queens problem with Backtracking algorithm
+    """Program that solves the N queens problem with
+    Backtracking algorithm
     Args:
         n (int): no of non-attacking queens to place on board.
                 (n)^2 determines the size of chess board
@@ -23,22 +25,22 @@ def ChessBoard(n: int):
         return True
 
     def saveBoard(row, cols, col_in_row):
-        """Saves the current position of the queens"""
+        """Saves the current state (position of the queens) of the board"""
         if row == n:
-            result = []
+            con_result = []
             for r in range(n):
-                tmp_result = []
+                temp_result = []
                 for c in range(n):
                     if c == col_in_row[r]:
-                        tmp_result.append(r)
-                        tmp_result.append(col_in_row[r])
-                        result.append(tmp_result)
-                if len(result) == n:
-                    result.append(result)
-                    tmp_result, result = [], []
+                        temp_result.append(r)
+                        temp_result.append(col_in_row[r])
+                        con_result.append(temp_result)
+                if len(con_result) == n:
+                    result.append(con_result)
+                    temp_result, con_result = [], []
 
     def placeQueen(row, cols, col_in_row):
-        """Places N non-attacking queens on board"""
+        """Places N non-attacking queens on an N * N chessboard"""
         saveBoard(row, cols, col_in_row)
         for col in range(n):
             if cols[col] == 0 and checkBoard(row, col, col_in_row):
@@ -62,5 +64,5 @@ if __name__ == '__main__':
         sys.exit(1)
 
     nqueens = ChessBoard(int(sys.argv[1]))
-    for queens in nqueens:
-        print(queens)
+    for quin in nqueens:
+        print(quin)
